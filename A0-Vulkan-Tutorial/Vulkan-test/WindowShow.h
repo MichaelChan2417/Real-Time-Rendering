@@ -17,6 +17,7 @@
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
+const int MAX_FRAMES_IN_FLIGHT = 2;
 
 #ifdef NDEBUG
 const bool enableValidationLayers = false;
@@ -90,6 +91,8 @@ private:
     VkQueue graphicsQueue;
     VkQueue presentQueue;
 
+    bool framebufferResized = false;
+
     VkSwapchainKHR swapChain;
     std::vector<VkImage> swapChainImages;
     VkFormat swapChainImageFormat;
@@ -102,10 +105,20 @@ private:
 
     std::vector<VkFramebuffer> swapChainFramebuffers;
 
+    uint32_t currentFrame = 0;
     VkCommandPool commandPool;
-    VkCommandBuffer commandBuffer;
+    // VkCommandBuffer commandBuffer; 
+    std::vector<VkCommandBuffer> commandBuffers;
+
+    // VkSemaphore imageAvailableSemaphore;
+    // VkSemaphore renderFinishedSemaphore;
+    // VkFence inFlightFence;
+    std::vector<VkSemaphore> imageAvailableSemaphores;
+    std::vector<VkSemaphore> renderFinishedSemaphores;
+    std::vector<VkFence> inFlightFences;
 
 //  methods
+    static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
     void initWindow();
     void initVulkan();
     void mainLoop();
@@ -118,8 +131,11 @@ private:
 
     void createFramebuffers();
     void createCommandPool();
-    void createCommandBuffer();
+    void createCommandBuffers();
     void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+
+    void drawFrame();
+    void createSyncObjects();
 
     // graphics pipeline
     void createGraphicsPipeline();
@@ -138,6 +154,8 @@ private:
     VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
     VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
     void createSwapChain();
+    void recreateSwapChain();
+    void cleanupSwapChain();
 
     // queue family
     QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
