@@ -1,4 +1,6 @@
-﻿  LogicalDevice.cpp
+﻿  FrameBuffer.cpp
+  GraphicsPipeline.cpp
+  LogicalDevice.cpp
   PhysicalDevice.cpp
   SwapChain.cpp
   Validations.cpp

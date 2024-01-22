@@ -13,6 +13,7 @@
 #include <cstdint> // Necessary for uint32_t
 #include <limits> // Necessary for std::numeric_limits
 #include <algorithm> // Necessary for std::clamp
+#include <fstream>
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
@@ -44,6 +45,23 @@ struct SwapChainSupportDetails {
     std::vector<VkSurfaceFormatKHR> formats;
     std::vector<VkPresentModeKHR> presentModes;
 };
+
+static std::vector<char> readFile(const std::string& filename) {
+    std::ifstream file(filename, std::ios::ate | std::ios::binary);
+
+    if (!file.is_open()) {
+        throw std::runtime_error("failed to open file!");
+    }
+
+    size_t fileSize = (size_t)file.tellg();
+    std::cout << filename << " has size " << fileSize << std::endl;
+    std::vector<char> buffer(fileSize);
+    file.seekg(0);
+    file.read(buffer.data(), fileSize);
+
+    file.close();
+    return buffer;
+}
 
 VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
 
@@ -78,6 +96,14 @@ private:
     VkExtent2D swapChainExtent;
 
     std::vector<VkImageView> swapChainImageViews;
+    VkRenderPass renderPass;
+    VkPipelineLayout pipelineLayout;
+    VkPipeline graphicsPipeline;
+
+    std::vector<VkFramebuffer> swapChainFramebuffers;
+
+    VkCommandPool commandPool;
+    VkCommandBuffer commandBuffer;
 
 //  methods
     void initWindow();
@@ -89,6 +115,16 @@ private:
 
     void createSurface();
     void createImageViews();
+
+    void createFramebuffers();
+    void createCommandPool();
+    void createCommandBuffer();
+    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+
+    // graphics pipeline
+    void createGraphicsPipeline();
+    VkShaderModule createShaderModule(const std::vector<char>& code);
+    void createRenderPass();
 
     // physical devices
     void pickPhysicalDevice();

@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="GraphicsPipeline.cpp" />
     <ClCompile Include="LogicalDevice.cpp" />
     <ClCompile Include="PhysicalDevice.cpp" />
     <ClCompile Include="SwapChain.cpp" />
@@ -143,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowShow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\frag.spv" />
+    <None Include="shaders\shader.frag" />
+    <None Include="shaders\shader.vert" />
+    <None Include="shaders\vert.spv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
