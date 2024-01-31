@@ -1,0 +1,3 @@
+[submodule "Scene-Viewer"]
+    path = A1-Scene-Viewer/code/Scene-Viewer
+    url = https://github.com/MichaelChan2417/Scene-Viewer.git

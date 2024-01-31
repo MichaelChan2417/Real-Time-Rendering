@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\STUDY\Vulkan\Include;D:\STUDY\Visual Studio\Libraries\glm;D:\STUDY\Visual Studio\Libraries\glfw-3.3.9.bin.WIN64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\STUDY\Vulkan\Include;D:\STUDY\Visual Studio\Libraries\glm;D:\STUDY\Visual Studio\Libraries\glfw-3.3.9.bin.WIN64\include;D:\STUDY\Visual Studio\Libraries\stb-master</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,7 +123,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\STUDY\Vulkan\Include;D:\STUDY\Visual Studio\Libraries\glm;D:\STUDY\Visual Studio\Libraries\glfw-3.3.9.bin.WIN64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\STUDY\Vulkan\Include;D:\STUDY\Visual Studio\Libraries\glm;D:\STUDY\Visual Studio\Libraries\glfw-3.3.9.bin.WIN64\include;D:\STUDY\Visual Studio\Libraries\stb-master</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +140,7 @@
     <ClCompile Include="LogicalDevice.cpp" />
     <ClCompile Include="PhysicalDevice.cpp" />
     <ClCompile Include="SwapChain.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Validations.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="WindowShow.cpp" />
@@ -152,6 +153,9 @@
     <None Include="shaders\shader.frag" />
     <None Include="shaders\shader.vert" />
     <None Include="shaders\vert.spv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\test.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
