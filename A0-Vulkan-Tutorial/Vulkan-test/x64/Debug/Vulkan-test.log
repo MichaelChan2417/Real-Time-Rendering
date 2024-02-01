@@ -1,14 +1,4 @@
-﻿  FrameBuffer.cpp
-  GraphicsPipeline.cpp
-  LogicalDevice.cpp
-  PhysicalDevice.cpp
-  SwapChain.cpp
-  Texture.cpp
-  Validations.cpp
-  VertexBuffer.cpp
-  WindowShow.cpp
-  Generating Code...
-GraphicsPipeline.obj : error LNK2005: stbi_convert_iphone_png_to_rgb already defined in FrameBuffer.obj
+﻿GraphicsPipeline.obj : error LNK2005: stbi_convert_iphone_png_to_rgb already defined in FrameBuffer.obj
 GraphicsPipeline.obj : error LNK2005: stbi_convert_iphone_png_to_rgb_thread already defined in FrameBuffer.obj
 GraphicsPipeline.obj : error LNK2005: stbi_failure_reason already defined in FrameBuffer.obj
 GraphicsPipeline.obj : error LNK2005: stbi_hdr_to_ldr_gamma already defined in FrameBuffer.obj
